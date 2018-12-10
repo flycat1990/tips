@@ -1,0 +1,59 @@
+### 常见中间件的管理
+
+#### Rabbitmq（/usr/local/lib/erlang/lib/rabbitmq_server-3.6.0/sbin）
+
+查看当前rabbitmq运行状况
+
+rabbitmqctl status
+
+查看集群运行状况
+
+rabbitmqctl cluster_status
+
+启动、关闭和重启rabbitmq服务
+
+rabbitmq-server -detached
+
+systemctl stop rabbitmq-server
+
+systemctl restart rabbitmq-server
+
+列出用户
+
+rabbitmqctl list_users
+
+新建用户
+
+rabbitmqctl add_user username password
+
+
+
+#### Kafka和zookeeper（192.168.12.100、192.168.12.101、192.168.12.102）
+
+kafka启动目录：/data02/opt/kafka/kafka_2.10-0.8.2.1/bin  
+
+zookeeper启动目录：/data02/opt/kafka/zookeeper-3.4.6/bin/
+
+启动kafka服务（kafka启动时先启动zookeeper，再启动kafka；关闭时相反，先关闭kafka，再关闭zookeeper）
+
+启动zookeeper：bin/zookeeper-server-start.sh config/zookeeper.properties &
+
+启动kafka： bin/kafka-server-start.sh config/server.properties &
+
+关闭kafka服务
+
+关闭kafka：bin/kafka-server-stop.sh
+
+关闭zookeeper：bin/zookeeper-server-stop.sh
+
+
+
+#### Redis（/home/lakala/redis/bin）
+
+启动redis
+
+./bin/redis-server ./conf/redis.conf（编写脚本：./start-all.sh）
+
+关闭redis
+
+ps -ef |grep redis |grep -v grep |awk '{print $2}' |xargs kill（./stop-all.sh）
