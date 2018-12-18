@@ -92,6 +92,10 @@ fdisk –l看下当前磁盘情况
 mkdir /mnt/data
 挂载分区
 mount /dev/sda1 /mnt/data
+开机直接挂载
+编辑/etc/fstab　文件
+添加：/dev/sda1 /test ext3 defaults 0  0 
+0， 0 表示开机不检查磁盘。
 
 16.plsql软件的使用
 在客户机上安装instantclient：只需复制instantclient解压文件即可，无需安装
