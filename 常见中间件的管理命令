@@ -26,6 +26,14 @@ rabbitmqctl list_users
 
 rabbitmqctl add_user username password
 
+#### 注意：
+
+当整个集群重启的时候，如果关掉了整个集群所有的节点，再启动服务。若先启动主节点，而备节点全部没有启动，就会出现上述的启动不了的问题。
+如果先将从节点全部起起来，再启动主节点，就一切顺利，数据也不会丢失
+从节点启动命令：
+rabbitmq-server -detached
+主节点启动命令：
+service rabbitmq-server start
 
 
 #### Kafka和zookeeper（192.168.12.100、192.168.12.101、192.168.12.102）
